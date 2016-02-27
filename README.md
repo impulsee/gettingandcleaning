@@ -14,3 +14,7 @@ This script realize course project  from the "Getting and Cleaning Data" course 
 ## Script result
 
 Script creates 2 dataset in global environment: tidydataset and tidydatasetmean. First is Tidy dataset created from original data. Codebook for this data located in file "CodeBook.md". Second dataset creates from first with the average of each variable for each activity and each subject. Also Datasets saved in txt files: tidyfull.txt (first dataset) and tidyavg.txt (second dataset)
+
+## Script Run
+
+Just run `source("run_analysis.R")`
