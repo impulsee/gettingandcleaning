@@ -115,12 +115,12 @@ CreateTidyDataSet<-function(DownloadAndExtract = TRUE){
     tidydataset
 }
 #This function creates TidyDataset with means and retuns it
-CreateDataSetWithMean<-function(Dataset = TidyData){
+CreateDataSetWithMean<-function(Dataset){
     
     id_vars<- c("SetType", "ActivityName", "SubjectID")
-    measure_vars<- setdiff(colnames(TidyData), id_vars)
+    measure_vars<- setdiff(colnames(Dataset), id_vars)
     #Melt Dataset to perform mean
-    melted_data <- melt(TidyData, id=id_vars, measure.vars=measure_vars)
+    melted_data <- melt(Dataset, id=id_vars, measure.vars=measure_vars)
     
     # Perform mean 
     tidydatasetmean<-dcast(melted_data, ActivityName + SubjectID ~ variable, mean)
@@ -136,4 +136,4 @@ write.table(tidydataset, fname)
 # Load & save dataset with means
 fname<-"tidyavg.txt"
 tidydatasetmean<-CreateDataSetWithMean(tidydataset)
-write.table(tidydatasetmean, fname)
+write.table(tidydatasetmean, fname,row.name=FALSE)
